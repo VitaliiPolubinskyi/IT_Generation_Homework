@@ -3,7 +3,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 
 public class Homework {
@@ -17,8 +16,8 @@ public class Homework {
         str = buffer.readLine();
         double dollar = Double.parseDouble(str);
         double result = dollar / bitcoin;
-        MathContext context = new MathContext(6, RoundingMode.HALF_UP);
-        BigDecimal numberOfBitcoins = new BigDecimal(result, context);
+        BigDecimal numberOfBitcoins = new BigDecimal(result);
+        numberOfBitcoins = numberOfBitcoins.setScale(7, RoundingMode.HALF_UP);
         System.out.println("You can buy " + numberOfBitcoins + " BTC");
         buffer.close();
     }
